@@ -1,11 +1,11 @@
 ﻿using CleanArchitecture.Application.Common.Exceptions;
 using CleanArchitecture.Application.TodoLists.Commands.CreateTodoList;
 using CleanArchitecture.Application.TodoLists.Commands.UpdateTodoList;
-using CleanArchitecture.Domain.Entities;
 using FluentAssertions;
 using NUnit.Framework;
 using System;
 using System.Threading.Tasks;
+using CleanArchitecture.Infrastructure.Entities;
 
 namespace CleanArchitecture.Application.IntegrationTests.TodoLists.Commands
 {
@@ -69,7 +69,7 @@ namespace CleanArchitecture.Application.IntegrationTests.TodoLists.Commands
 
             await SendAsync(command);
 
-            var list = await FindAsync<TodoList>(listId);
+            var list = await FindAsync<Question>(listId);
 
             list.Title.Should().Be(command.Title);
             list.LastModifiedBy.Should().NotBeNull();

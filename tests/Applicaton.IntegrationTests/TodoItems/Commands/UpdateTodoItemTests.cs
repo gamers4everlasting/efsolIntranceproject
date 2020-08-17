@@ -51,7 +51,7 @@ namespace CleanArchitecture.Application.IntegrationTests.TodoItems.Commands
 
             await SendAsync(command);
 
-            var item = await FindAsync<TodoItem>(itemId);
+            var item = await FindAsync<UserAnswers>(itemId);
 
             item.Title.Should().Be(command.Title);
             item.LastModifiedBy.Should().NotBeNull();

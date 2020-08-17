@@ -41,7 +41,7 @@ namespace CleanArchitecture.Application.IntegrationTests.TodoItems.Commands
                 Id = itemId
             });
 
-            var list = await FindAsync<TodoItem>(listId);
+            var list = await FindAsync<UserAnswers>(listId);
 
             list.Should().BeNull();
         }

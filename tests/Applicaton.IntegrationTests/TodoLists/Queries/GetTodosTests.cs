@@ -1,9 +1,9 @@
 ﻿using CleanArchitecture.Application.TodoLists.Queries.GetTodos;
-using CleanArchitecture.Domain.Entities;
 using FluentAssertions;
 using NUnit.Framework;
 using System.Linq;
 using System.Threading.Tasks;
+using CleanArchitecture.Infrastructure.Entities;
 
 namespace CleanArchitecture.Application.IntegrationTests.TodoLists.Queries
 {
@@ -24,18 +24,18 @@ namespace CleanArchitecture.Application.IntegrationTests.TodoLists.Queries
         [Test]
         public async Task ShouldReturnAllListsAndItems()
         {
-            await AddAsync(new TodoList
+            await AddAsync(new Question
             {
                 Title = "Shopping",
                 Items =
                     {
-                        new TodoItem { Title = "Apples", Done = true },
-                        new TodoItem { Title = "Milk", Done = true },
-                        new TodoItem { Title = "Bread", Done = true },
-                        new TodoItem { Title = "Toilet paper" },
-                        new TodoItem { Title = "Pasta" },
-                        new TodoItem { Title = "Tissues" },
-                        new TodoItem { Title = "Tuna" }
+                        new UserAnswers { Title = "Apples", Done = true },
+                        new UserAnswers { Title = "Milk", Done = true },
+                        new UserAnswers { Title = "Bread", Done = true },
+                        new UserAnswers { Title = "Toilet paper" },
+                        new UserAnswers { Title = "Pasta" },
+                        new UserAnswers { Title = "Tissues" },
+                        new UserAnswers { Title = "Tuna" }
                     }
             });
 
