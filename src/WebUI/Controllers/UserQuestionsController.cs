@@ -1,14 +1,13 @@
 ﻿using System.Collections.Generic;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using CleanArchitecture.Application.Commands;
 using CleanArchitecture.Application.Models;
 using CleanArchitecture.Application.Queries;
+using CleanArchitecture.WebUI.Controllers;
+using Microsoft.AspNetCore.Mvc;
 
-namespace CleanArchitecture.WebUI.Controllers
+namespace WebApplication.Controllers
 {
-    [ApiController]
     public class UserQuestionsController : ApiController
     {
         /// <summary>
@@ -26,7 +25,7 @@ namespace CleanArchitecture.WebUI.Controllers
         /// </summary>
         /// <param name="command"></param>
         /// <returns></returns>
-        [HttpPut]
+        [HttpPut("[action]")]
         public async Task<ActionResult> Update(PutAnswersCommand command)
         {
             await Mediator.Send(command);
@@ -37,12 +36,12 @@ namespace CleanArchitecture.WebUI.Controllers
         /// Endpoint to create a user
         /// </summary>
         /// <param name="command"></param>
-        /// <returns></returns>
+        /// <returns>userId</returns>
         [HttpPost]
-        public async Task<ActionResult> AddUser(AddUserCommand command)
+        public async Task<ActionResult<long>> AddUser(AddUserCommand command)
         {
-            await Mediator.Send(command);
-            return NoContent();
+            return await Mediator.Send(command);
+            
         }
 
     }
